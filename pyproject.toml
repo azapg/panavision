@@ -1,0 +1,15 @@
+[project]
+name = "earth-engine"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "earthengine-api>=1.6.11",
+    "folium>=0.20.0",
+    "geedim>=2.0.0",
+    "geemap>=0.36.4",
+    "leafmap>=0.57.7",
+    "notebook>=7.4.7",
+    "pycrs>=1.0.2",
+]

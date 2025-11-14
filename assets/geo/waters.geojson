@@ -1,0 +1,130 @@
+{
+  "type": "FeatureCollection",
+  "columns": {
+    "name": "String",
+    "canal": "String",
+    "system:index": "String"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "gatun",
+        "canal": "true"
+      },
+      "geometry": {
+        "coordinates": [
+          -79.89106059435038,
+          9.200513819259754
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "canal",
+        "canal": "true"
+      },
+      "geometry": {
+        "coordinates": [
+          -79.57256032117454,
+          8.959025946430387
+        ],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "canal",
+        "canal": "true"
+      },
+      "geometry": {
+        "coordinates": [
+          -79.60115421669313,
+          9.007508461086587
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "canal",
+        "canal": "true"
+      },
+      "geometry": {
+        "coordinates": [
+          -79.92300579084029,
+          9.26641182720175
+        ],
+        "type": "Point"
+      },
+      "id": 3
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "alajuela",
+        "canal": "false"
+      },
+      "geometry": {
+        "coordinates": [
+          -79.57640938906017,
+          9.25630581994325
+        ],
+        "type": "Point"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "bayano",
+        "canal": "false"
+      },
+      "geometry": {
+        "coordinates": [
+          -78.78604891841853,
+          9.122877146813593
+        ],
+        "type": "Point"
+      },
+      "id": 5
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "peñones",
+        "canal": "false"
+      },
+      "geometry": {
+        "coordinates": [
+          -81.26958065939658,
+          8.335515395581709
+        ],
+        "type": "Point"
+      },
+      "id": 6
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "colon",
+        "canal": "false"
+      },
+      "geometry": {
+        "coordinates": [
+          -80.65611671189093,
+          8.887197104194456
+        ],
+        "type": "Point"
+      },
+      "id": 7
+    }
+  ]
+}
