@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>El Espacio Latente Panameño · CIIECOM 2025</title>
-  <meta name="description" content="Resumen del proyecto: embeddings satelitales (AlphaEarth/Google) aplicados a Panamá: visualización latente, búsqueda por similitud y clustering no supervisado. Presentado en CIIECOM 2025." />
+  <meta name="description" content="Análisis territorial de Panamá mediante embeddings satelitales de AlphaEarth. Paper académico completo, póster científico y notebooks de análisis. Presentado en CIIECOM 2025." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="conf-badge">CIIECOM 2025</div>
       <h1 class="title">EL ESPACIO LATENTE PANAMEÑO</h1>
-      <p class="subtitle">Embeddings satelitales · Geoespacio · Earth Engine</p>
+      <p class="subtitle">Análisis Territorial mediante Embeddings Satelitales de AlphaEarth</p>
 
       <div class="authors">
         <span>Allan Zapata</span>
@@ -29,7 +29,8 @@
       <div class="affiliation">Universidad de Panamá · FIEC · Ciencia de Datos · Grupo Panavisión</div>
 
       <div class="cta">
-        <a class="btn primary" href="./poster/panavision_poster.pdf" target="_blank" rel="noopener">Ver/Descargar Póster (PDF, alta calidad)</a>
+        <a class="btn primary" href="./paper/panavision_paper.pdf" target="_blank" rel="noopener">📄 Leer Paper Completo (PDF)</a>
+        <a class="btn secondary" href="./poster/panavision_poster.pdf" target="_blank" rel="noopener">🎨 Ver Póster Científico (PDF)</a>
         <a class="btn" href="https://github.com/azapg/panavision" target="_blank" rel="noopener noreferrer" aria-label="Ver código en GitHub">
           <svg class="icon" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.2 1.87.86 2.33.66.07-.52.28-.86.51-1.06-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
@@ -46,30 +47,42 @@
       <div class="container narrow">
         <h2>Resumen</h2>
         <p>
-          Este trabajo explora el uso de embeddings satelitales anuales (AlphaEarth / Google) que representan
-          cada píxel terrestre como un vector unitario en <strong>ℝ<sup>64</sup></strong>. Estos embeddings integran información
-          multi-fuente (Sentinel-2 óptico, Sentinel-1 radar, topografía y clima) y permiten medir similitud por el producto punto (coseno).
-          Sobre el territorio de Panamá, construimos: (1) <em>visualizaciones RGB</em> del espacio latente, (2) <em>búsqueda por similitud</em>
-          con semillas puntuales/centroides, y (3) <em>clustering no supervisado</em> en el espacio de 64 dimensiones.
+          Los <em>satellite embeddings</em> de Google DeepMind, introducidos en el proyecto AlphaEarth, representan una nueva frontera
+          en la observación terrestre. Cada píxel del planeta se codifica como un vector unitario en <strong>ℝ<sup>64</sup></strong> obtenido
+          mediante un encoder CNN-Transformer entrenado sobre series temporales multifuente: <strong>Sentinel-2</strong> (óptico multiespectral),
+          <strong>Sentinel-1</strong> (radar SAR), <strong>SRTM</strong> (topografía digital) y variables climáticas globales.
         </p>
         <p>
-          Usando Google Earth Engine, muestreamos <strong>5,000</strong> píxeles a escala <strong>50 m</strong> para entrenar un
-          <strong>k-means</strong> con <strong>k = 8</strong> y asignamos etiquetas a todo Panamá (año 2024). Los clústeres obtenidos capturan
-          gradientes ecológicos, zonas urbanas y patrones de uso de suelo. Adicionalmente, mapeamos <em>similitud coseno</em> a partir de
-          referencias estratégicas como la <em>mina Cobre Panamá</em>, el <em>vertedero Cerro Patacón</em> y perfiles de agua del Canal, mostrando
-          que el espacio latente separa eficazmente superficies antrópicas de cuerpos de agua.
+          Este proyecto explora el espacio latente del territorio panameño mediante tres aproximaciones analíticas complementarias:
+        </p>
+        <ol style="text-align: left; max-width: 600px; margin: 1.5em auto;">
+          <li><strong>Visualización cromática</strong> del espacio latente mediante proyección RGB de bandas seleccionadas</li>
+          <li><strong>Búsqueda por similitud coseno</strong> usando referencias estratégicas (mina Cobre Panamá, vertedero Cerro Patacón, perfiles de agua del Canal)</li>
+          <li><strong>Clustering no supervisado</strong> (k-means, k=8) para identificar clases latentes de superficie</li>
+        </ol>
+        <p>
+          Los resultados revelan que el embedding captura gradientes ecológicos, zonas urbanas y patrones de uso del suelo con alta coherencia
+          espacial. El clustering distingue claramente entre <strong>selva húmeda caribeña</strong>, <strong>tierras altas cordilleranas</strong>
+          y el <strong>arco seco del Pacífico</strong>. Los mapas de similitud identifican firmas de construcción industrial y separan agua dulce
+          lacustre de aguas costeras, correlacionadas con diferencias en turbidez y uso antropogénico.
+        </p>
+        <p>
+          <strong>📖 Para detalles metodológicos completos, formulación matemática y análisis exhaustivo de resultados, consulte el
+          <a href="./paper/panavision_paper.pdf" target="_blank" rel="noopener">paper académico completo</a> en formato IEEE.</strong>
         </p>
       </div>
     </section>
 
     <section class="section alt">
       <div class="container narrow">
-        <h2>Contribuciones</h2>
+        <h2>Contribuciones y Hallazgos</h2>
         <ul class="bullets">
-          <li>Visualización cromática del espacio latente (proyección RGB de bandas seleccionadas) para Panamá.</li>
-          <li>Búsqueda por similitud coseno con semillas puntuales y centroides de colecciones de puntos.</li>
-          <li>Clustering k-means (k=8) entrenado con 5,000 muestras a 50 m, aplicado a 2024.</li>
-          <li>Serie 2017–2024 de la mina Cobre Panamá a partir de embeddings anuales.</li>
+          <li><strong>Visualización del espacio latente:</strong> Proyección RGB que revela estructura territorial nítida. Zonas urbanas aparecen en tonos rosados, selva húmeda en verde-azul, arco seco en amarillo-naranja.</li>
+          <li><strong>Clustering geográficamente coherente:</strong> k-means (k=8) reproduce gradientes ecológicos conocidos sin clasificación supervisada. Separación clara entre provincias biogeográficas.</li>
+          <li><strong>Similitud con mina Cobre Panamá:</strong> Identifica infraestructura industrial (puertos, esclusas, zonas urbanas densas). Baja similitud con cuerpos de agua.</li>
+          <li><strong>Perfiles de agua diferenciados:</strong> Lago Gatún vs. aguas costeras muestran firmas espectrales distintivas, correlacionadas con turbidez y salinidad.</li>
+          <li><strong>Serie temporal 2017-2024:</strong> Captura transición de cobertura boscosa a suelo expuesto durante construcción, operación y cierre de la mina.</li>
+          <li><strong>Metodología reproducible:</strong> Notebooks completos en Python/Earth Engine, datos abiertos, código fuente disponible en GitHub.</li>
         </ul>
       </div>
     </section>
@@ -78,42 +91,118 @@
       <div class="container narrow">
         <h2>Material y Métodos</h2>
         <p>
-          Implementamos los experimentos en Google Earth Engine. Los notebooks base de este resumen son:
+          Los análisis se implementaron en <strong>Google Earth Engine</strong> usando la colección <code>GOOGLE/SATELLITE_EMBEDDING/V1/ANNUAL</code>
+          con resolución espacial de 10 metros. Cada píxel contiene un embedding de 64 dimensiones con norma unitaria.
         </p>
+        <h3 style="font-size: 1.1em; margin-top: 1.5em;">Notebooks de Análisis</h3>
         <ul class="files">
-          <li><code>clustering.ipynb</code>: muestreo estratificado, entrenamiento k-means (k=8) y mapa de clústeres.</li>
-          <li><code>similarity.ipynb</code>: mapas de similitud coseno para mina, vertedero y perfiles de agua (Gatún, canal/no-canal).</li>
-          <li><code>mina_years.ipynb</code>: visualización anual 2017–2024 para la región de la mina Cobre Panamá.</li>
+          <li><code>clustering.ipynb</code>: Muestreo estratificado de 5,000 píxeles a escala 50m, entrenamiento k-means (k=8) y generación de mapa de clústeres para todo Panamá.</li>
+          <li><code>similarity.ipynb</code>: Mapas de similitud coseno para mina Cobre Panamá, vertedero Cerro Patacón, y tres perfiles de agua (punto Gatún, promedio Canal, promedio no-Canal).</li>
+          <li><code>mina_years.ipynb</code>: Serie temporal 2017–2024 de la región minera, capturando fases de construcción, operación y cierre.</li>
+          <li><code>utils.py</code>: Funciones auxiliares para autenticación, carga de geometrías, visualización, clustering y cálculo de similitud coseno.</li>
         </ul>
+        <h3 style="font-size: 1.1em; margin-top: 1.5em;">Formulación Matemática</h3>
         <p>
-          El póster fue compuesto en <strong>Typst</strong> (<code>docs/poster_modern.typ</code>) y está disponible en PDF de alta calidad
-          mediante el botón superior.
+          La similitud coseno entre embeddings unitarios se calcula como:
+          <br><strong>s(a, b) = aᵀb = cos θ</strong>
+        </p>
+        <p>
+          El clustering k-means minimiza la varianza intra-cluster en el espacio de 64 dimensiones.
+          Para detalles completos de la formulación matemática, consulte la <strong>sección de Metodología</strong> del
+          <a href="./paper/panavision_paper.pdf" target="_blank" rel="noopener">paper académico</a>.
+        </p>
+        <h3 style="font-size: 1.1em; margin-top: 1.5em;">Publicaciones</h3>
+        <p>
+          El <strong>paper académico</strong> y el <strong>póster científico</strong> fueron compuestos en <strong>Typst</strong>
+          (<code>docs/paper.typ</code> y <code>docs/poster_modern.typ</code>) y están disponibles en PDF de alta calidad mediante los botones superiores.
         </p>
       </div>
     </section>
 
     <section class="section alt">
       <div class="container narrow">
-        <h2>Resultados Destacados</h2>
+        <h2>Resultados Principales</h2>
+        
+        <h3 style="font-size: 1.1em; margin-top: 1.5em;">🗺️ Clustering del Territorio</h3>
+        <p>
+          El clustering k-means (k=8) revela estructura latente coherente con gradientes ecológicos:
+        </p>
         <ul class="bullets">
-          <li>Los clústeres latentes son geográficamente coherentes y separan usos del suelo.</li>
-          <li>La similitud con la mina resalta superficies antrópicas (urbano, puertos, esclusas) más que cuerpos de agua.</li>
-          <li>Los perfiles acuáticos convergen en una región común del espacio latente, con alta similitud solo sobre agua.</li>
-          <li>La serie temporal de la mina evidencia la evolución de su superficie entre 2017 y 2024.</li>
+          <li><strong>Cluster azul oscuro:</strong> Selva húmeda caribeña y cuenca del Canal (alta precipitación)</li>
+          <li><strong>Clusters verdes:</strong> Tierras altas de la Cordillera Central (bosque nuboso, montaña)</li>
+          <li><strong>Clusters rojo-amarillo:</strong> Arco seco del Pacífico (sabanas, agricultura, ganadería)</li>
+          <li><strong>Cluster urbano:</strong> Ciudades principales (Panamá, Colón, David, Santiago)</li>
+        </ul>
+
+        <h3 style="font-size: 1.1em; margin-top: 1.5em;">⛏️ Similitud con Superficies Antropizadas</h3>
+        <p>
+          El mapa de similitud con la mina Cobre Panamá identifica:
+        </p>
+        <ul class="bullets">
+          <li>Zonas urbanas consolidadas (alta similitud espectral con suelo industrial)</li>
+          <li>Infraestructura portuaria de Punta Rincón</li>
+          <li>Esclusas y estructuras de concreto del Canal</li>
+          <li>Baja similitud con aguas del lago Gatún (separación agua/tierra)</li>
+        </ul>
+
+        <h3 style="font-size: 1.1em; margin-top: 1.5em;">💧 Perfiles de Agua Diferenciados</h3>
+        <ul class="bullets">
+          <li><strong>Punto Gatún:</strong> Alta similitud con lagos Gatún, Alajuela y embalses (agua dulce lacustre)</li>
+          <li><strong>Promedio Canal:</strong> Identifica sistema lacustre del Canal, baja similitud con costas</li>
+          <li><strong>Promedio no-Canal:</strong> Alta similitud con aguas costeras, estuarios y manglares</li>
+          <li>El embedding captura diferencias en turbidez, salinidad y contenido de sedimentos</li>
+        </ul>
+
+        <h3 style="font-size: 1.1em; margin-top: 1.5em;">📈 Serie Temporal 2017-2024</h3>
+        <p>
+          La evolución del espacio latente de la mina Cobre Panamá revela tres fases:
+        </p>
+        <ul class="bullets">
+          <li><strong>2017-2019 (Construcción):</strong> Transición de cobertura boscosa a suelo expuesto</li>
+          <li><strong>2020-2023 (Operación):</strong> Estabilización de firma latente en tonos industrial</li>
+          <li><strong>2024 (Post-cierre):</strong> Cambios incipientes en zonas de rehabilitación</li>
         </ul>
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow">
-        <h2>Cita y Agradecimientos</h2>
+        <h2>Referencias y Cita</h2>
         <p>
-          Este proyecto fue preparado para <strong>CIIECOM 2025</strong> y realizado por el <em>Grupo Panavisión</em>
-          de la <em>Universidad de Panamá · FIEC · Ciencia de Datos</em>.
+          Este trabajo se basa en los <strong>satellite embeddings</strong> de Google DeepMind/AlphaEarth:
+        </p>
+        <blockquote style="border-left: 4px solid #2563eb; padding-left: 1em; margin: 1.5em 0; font-style: italic; color: #4b5563;">
+          Brown, C. F., et al. (2025). <em>AlphaEarth Foundations: An embedding field model for accurate and efficient global mapping from sparse label data.</em> arXiv:2507.22291 [cs.CV]
+        </blockquote>
+        <p>
+          <strong>Para citar este trabajo:</strong>
+        </p>
+        <blockquote style="border-left: 4px solid #059669; padding-left: 1em; margin: 1.5em 0; font-style: italic; color: #4b5563;">
+          Zapata, A., Quijada, E., Donadío, R., & Downer, Y. (2025). <em>El Espacio Latente Panameño: Análisis Territorial mediante Embeddings Satelitales de AlphaEarth.</em> Presentado en CIIECOM 2025, Universidad de Panamá.
+        </blockquote>
+
+        <h2 style="margin-top: 2em;">Agradecimientos</h2>
+        <p>
+          Este proyecto fue preparado para <strong>CIIECOM 2025</strong> y realizado por el <strong>Grupo Panavisión</strong>
+          de la Universidad de Panamá (Facultad de Informática, Electrónica y Comunicación · Ciencia de Datos).
         </p>
         <p>
-          Agradecemos a DeepMind/AlphaEarth por la publicación pública de los embeddings satelitales y a la comunidad de
-          <em>geemap</em> por herramientas de visualización en Earth Engine.
+          Agradecemos a:
+        </p>
+        <ul class="bullets">
+          <li><strong>Google DeepMind/AlphaEarth</strong> por la publicación pública de los embeddings satelitales</li>
+          <li><strong>Google Earth Engine</strong> por la infraestructura de procesamiento geoespacial</li>
+          <li>La comunidad de <strong>geemap</strong> por las herramientas de visualización</li>
+          <li><strong>Universidad de Panamá</strong> por el apoyo institucional</li>
+        </ul>
+
+        <h2 style="margin-top: 2em;">Código Abierto</h2>
+        <p>
+          Todos los notebooks, código fuente y datos están disponibles en:
+          <br><strong><a href="https://github.com/azapg/panavision" target="_blank" rel="noopener">github.com/azapg/panavision</a></strong>
+        </p>
+        <p style="margin-top: 1.5em; padding: 1em; background: #f3f4f6; border-radius: 0.5em;">
+          📬 <strong>Contacto:</strong> allan.zapata@up.ac.pa
         </p>
       </div>
     </section>

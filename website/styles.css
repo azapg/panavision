@@ -22,10 +22,13 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;back
 .site-header .conf-badge{display:inline-block;margin:18px auto 6px;padding:6px 10px;border:1px solid #2a2a31;border-radius:999px;background:#121219;color:#dcdce2;font-weight:600}
 .site-header .cta{display:flex;gap:12px;justify-content:center;padding:10px 0 28px}
 
-.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #2a2a31;color:var(--text);text-decoration:none;background:var(--panel)}
-.btn:hover{border-color:#3a3a45}
-.btn.primary{background:linear-gradient(135deg, var(--accent) 0%, #1aa34a 100%);border-color:transparent;color:#08150b;font-weight:700}
-.btn.primary:hover{filter:brightness(1.05)}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;border:1px solid #2a2a31;color:var(--text);text-decoration:none;background:var(--panel);transition: all 0.2s ease;font-weight:500}
+.btn:hover{border-color:#3a3a45;transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);border-color:transparent;color:#ffffff;font-weight:700;box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3)}
+.btn.primary:hover{filter:brightness(1.1);box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4)}
+/* Secondary button for poster */
+.btn.secondary{background:linear-gradient(135deg, #059669 0%, #047857 100%);border-color:transparent;color:#ffffff;font-weight:600;box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3)}
+.btn.secondary:hover{filter:brightness(1.1);box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4)}
 /* Icon inside buttons */
 .btn .icon{display:inline-block;vertical-align:-3px;margin-right:8px;fill:white}
 
